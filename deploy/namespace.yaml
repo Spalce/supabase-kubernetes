@@ -1,9 +1,0 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: spalce-credaction-supabase
-  labels:
-    name: spalce-credaction-supabase
-    app.kubernetes.io/name: supabase
-    app.kubernetes.io/instance: supabase
