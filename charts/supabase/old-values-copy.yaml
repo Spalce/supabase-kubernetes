@@ -24,9 +24,9 @@ secret:
   ## Docs: https://supabase.com/docs/guides/self-hosting/docker#generate-and-configure-api-keys
   ##
   jwt:
-    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GEeyJ0eXAiOiAiSldUIiwiYWxnIjogIkhTMjU2In0.ewogICJyb2xlIjogImFub24iLAogICJpc3MiOiAic3VwYWJhc2UiLAogICJpYXQiOiAxNzYwMzk5NjgyLAogICJleHAiOiAxOTE4MDc5NjgyCn0.xzjJFfvYNysJZpnx17tlSdmqJBxRQxFg2xxubV1-d0g"
-    serviceKey: "eyJ0eXAiOiAiSldUIiwiYWxnIjogIkhTMjU2In0.ewogICJyb2xlIjogInNlcnZpY2Vfcm9sZSIsCiAgImlzcyI6ICJzdXBhYmFzZSIsCiAgImlhdCI6IDE3NjAzOTk2ODIsCiAgImV4cCI6IDE5MTgwNzk2ODIKfQ.BGsO7h-Bh_kuQJj_0qhGWaBeBthMZ4WNzSKJXZfR3fE"
-    secret: "02oM6PvAtlA8u698yMCbEyGitGDBFG6fnMGFwgV+I2wHoQIpx2a8IL3BwdfUECxvsG6woEJooGXlFTgBgHrCFw=="
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE"
+    serviceKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJzZXJ2aWNlX3JvbGUiLAogICAgImlzcyI6ICJzdXBhYmFzZS1kZW1vIiwKICAgICJpYXQiOiAxNjQxNzY5MjAwLAogICAgImV4cCI6IDE3OTk1MzU2MDAKfQ.DaYlNEoUrrEn2Ig7tqibS-PHK5vgusbcbo7X36XVt4Q"
+    secret: "your-super-secret-jwt-token-with-at-least-32-characters-long"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -41,7 +41,7 @@ secret:
   ## Required even when using an external database
   ##
   db:
-    password: "unQ+nE0zLJzp1Kq6hOyitSohJNgd6VU1tMifBNg7bik="
+    password: "your-super-secret-and-long-postgres-password"
     database: "postgres"
 
     ## Reference to existing secret
@@ -55,8 +55,8 @@ secret:
   ## Logflare credentials
   ##
   analytics:
-    publicAccessToken: "z/uVNNcJGrRVXQ7VmIxx2uO0erUuJwGAkI4xJxhzvfg="
-    privateAccessToken: "eiUv2yJ138Bg56z3lQ35mcJIGDzVynDP7n2Tqyqd/pk="
+    publicAccessToken: "your-super-secret-and-long-logflare-key-public"
+    privateAccessToken: "your-super-secret-and-long-logflare-key-private"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -69,8 +69,8 @@ secret:
   ## SMTP credentials
   ##
   smtp:
-    username: "no-reply@spalce.net"
-    password: "F[Oo+7jf9IeFQ,p5THY8.M&xig)e&g"
+    username: "fake_mail_user"
+    password: "fake_mail_password"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -84,7 +84,7 @@ secret:
   ##
   dashboard:
     username: "supabase"
-    password: "Ziu0cNUv3mxDxVmFSnPlBD59gKGcwQi1"
+    password: "this_password_is_insecure_and_should_be_updated"
     openAiApiKey: "key_super_secret"
 
     ## Reference to existing secret
@@ -99,8 +99,8 @@ secret:
   ## S3-compatible credentials
   ##
   s3:
-    keyId: "minioadmin"
-    accessKey: "minioadmin"
+    keyId: ""
+    accessKey: ""
 
     ## Reference to existing secret
     # secretRef: ""
@@ -117,7 +117,7 @@ secret:
     ## Used by Supabase Realtime (Phoenix) to sign and encrypt internal data,
     ## sessions and tokens. Equivalent to Phoenix SECRET_KEY_BASE.
     ## Generate with: openssl rand -base64 64
-    secretKeyBase: "7hWs5SEFc8Zk/bIS7V8sztyH8LTm8+/FyX6G1a7P4FiUxCkbFYAL3hZ30h+k9LoE6bhb8uKK+EA9aehZQfbwdQ=="
+    secretKeyBase: "UpNVntn3cDxHJpq99YMc1T1AQgQpc8kfYTuRgBiYa15BLrx8etQoXz3gZv1/u2oq"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -132,7 +132,7 @@ secret:
   meta:
     ## Used to encrypt sensitive metadata at rest.
     ## Generate with: openssl rand -hex 32
-    cryptoKey: "c387db3c29197c94f2760c4a206e56d9a54e3014008238ab79f1730a826fd34c"
+    cryptoKey: "your-encryption-key-32-chars-min"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -212,18 +212,13 @@ db:
 
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
-  resources:
-    requests:
-      memory: "1Gi"
-      cpu: "500m"
-    limits:
-      memory: "2Gi"
-      cpu: "2000m"
+  ## and explicitly configure it according to your cluster capacity
+  resources: {}
 
   ## Persistent volume configuration
   persistence:
     enabled: true
-    storageClassName: "longhorn"
+    storageClassName: ""
     annotations: {}
     size: 8Gi
     accessModes:
@@ -302,9 +297,9 @@ studio:
     HOSTNAME: "::"
     STUDIO_PORT: "3000"
     POSTGRES_PORT: 5432
-    DEFAULT_ORGANIZATION_NAME: Spalce Technologies Ltd.
-    DEFAULT_PROJECT_NAME: CredAction
-    SUPABASE_PUBLIC_URL: https://api.credaction.com
+    DEFAULT_ORGANIZATION_NAME: Default Organization
+    DEFAULT_PROJECT_NAME: Default Project
+    SUPABASE_PUBLIC_URL: http://supabase.local
     NEXT_PUBLIC_ENABLE_LOGS: true
     ## Set value to bigquery to use Big Query backend for analytics (postgres or bigquery)
     NEXT_ANALYTICS_BACKEND_PROVIDER: postgres
@@ -327,19 +322,13 @@ studio:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 5
+    maxReplicas: 100
     targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
 
@@ -393,10 +382,10 @@ auth:
     DB_DRIVER: postgres
     ## SSL mode options: disable, allow, prefer, require, verify-ca, verify-full
     DB_SSL: disable
-    API_EXTERNAL_URL: https://api.credaction.com
+    API_EXTERNAL_URL: http://supabase.local
     GOTRUE_API_HOST: "0.0.0.0"
     GOTRUE_API_PORT: "9999"
-    GOTRUE_SITE_URL: https://api.credaction.com
+    GOTRUE_SITE_URL: http://supabase.local
     GOTRUE_URI_ALLOW_LIST: "*"
     GOTRUE_DISABLE_SIGNUP: "false"
     GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
@@ -408,9 +397,9 @@ auth:
     GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED: "false"
     # GOTRUE_MAILER_SECURE_EMAIL_CHANGE_ENABLED: true
     # GOTRUE_SMTP_MAX_FREQUENCY: 1s
-    GOTRUE_SMTP_ADMIN_EMAIL: "info@spalce.net"
-    GOTRUE_SMTP_HOST: "server.spalce.net"
-    GOTRUE_SMTP_PORT: "587"
+    GOTRUE_SMTP_ADMIN_EMAIL: "SMTP_ADMIN_MAIL"
+    GOTRUE_SMTP_HOST: "SMTP_HOST"
+    GOTRUE_SMTP_PORT: "123"
     GOTRUE_EXTERNAL_PHONE_ENABLED: "false"
     GOTRUE_SMS_AUTOCONFIRM: "false"
     GOTRUE_SMTP_SENDER_NAME: "SMTP_SENDER_NAME"
@@ -454,19 +443,13 @@ auth:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 5
+    maxReplicas: 100
     targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
 
@@ -540,13 +523,7 @@ rest:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -633,13 +610,7 @@ realtime:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -719,13 +690,7 @@ meta:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -820,18 +785,12 @@ storage:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Persistent volume configuration
   persistence:
     enabled: true
-    storageClassName: "longhorn"
+    storageClassName: ""
     annotations: {}
     size: 10Gi
     accessModes:
@@ -912,18 +871,12 @@ imgproxy:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Persistent volume configuration
   persistence:
     enabled: true
-    storageClassName: "longhorn"
+    storageClassName: ""
     annotations: {}
     size: 10Gi
     accessModes:
@@ -998,15 +951,15 @@ kong:
       nginx.ingress.kubernetes.io/rewrite-target: /
       # cert-manager.io/cluster-issuer: "letsencrypt-staging"
       # kubernetes.io/tls-acme: "true"
-    tls:
+    tls: []
       ## Define TLS secret for SSL termination.
       ## This section can be left blank if using cluster certificate manager.
       ## Otherwise, setting this in tandem with certificate manager will overwrite the secret name.
-       - secretName: credaction-api-tls
-         hosts:
-           - api.credaction.com
+      # - secretName: example-com-tls
+      #   hosts:
+      #     - example.com
     hosts:
-      - host: api.credaction.com
+      - host: supabase.local
         paths:
           - path: /
             pathType: Prefix
@@ -1029,13 +982,7 @@ kong:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -1126,13 +1073,7 @@ analytics:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -1202,13 +1143,7 @@ vector:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "100m"
-    limits:
-      memory: "256Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -1290,13 +1225,7 @@ functions:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "500m"
+  resources: {}
 
   ## Horizontal Pod Autoscaler configuration
   autoscaling:
@@ -1311,7 +1240,7 @@ functions:
 ##
 minio:
   ## Enable Minio provisioning
-  enabled: true
+  enabled: false
 
   ## Minio container image configuration
   image:
@@ -1368,18 +1297,12 @@ minio:
   ## Resource requests and limits
   ## NOTE: It is recommended to leave this empty by default
   ## and explicitly configure it according to your cluster capacity
-  resources:
-    requests:
-      memory: "512Mi"
-      cpu: "250m"
-    limits:
-      memory: "1Gi"
-      cpu: "1000m"
+  resources: {}
 
   ## Persistent volume configuration
   persistence:
     enabled: false
-    storageClassName: "longhorn"
+    storageClassName: ""
     annotations: {}
     size: 10Gi
     accessModes:
