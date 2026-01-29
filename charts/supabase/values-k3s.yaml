@@ -47,31 +47,12 @@ secret:
 db:
   enabled: true
   
-  image:
-    tag: "15.8.1.085"
-  
-  livenessProbe:
-    exec:
-      command:
-        - pg_isready
-        - -U
-        - postgres
-    initialDelaySeconds: 3
-  
   persistence:
     enabled: true
     storageClassName: "longhorn"
     size: 20Gi
     accessModes:
       - ReadWriteOnce
-  environment:
-    POSTGRES_HOST: /var/run/postgresql
-    PGPORT: "5432"
-    POSTGRES_PORT: "5432"
-    JWT_EXP: 3600
-    # POSTGRES_HOST_AUTH_METHOD: md5
-    # POSTGRES_SSL_CERT: /path/to/ssl/server.crt
-    # POSTGRES_SSL_KEY: /path/to/ssl/server.key
   
   resources:
     requests:
@@ -88,18 +69,12 @@ db:
 studio:
   enabled: true
   
-  image:
-    tag: "2025.11.10-sha-5291fe3"
-  
   environment:
     SUPABASE_PUBLIC_URL: https://api.credaction.com
     DEFAULT_ORGANIZATION_NAME: "Credaction"
     DEFAULT_PROJECT_NAME: "Production"
     NEXT_PUBLIC_ENABLE_LOGS: "true"
     NEXT_ANALYTICS_BACKEND_PROVIDER: postgres
-    HOSTNAME: "::"
-    STUDIO_PORT: "3000"
-    POSTGRES_PORT: 5432
   
   resources:
     requests:
@@ -116,9 +91,6 @@ studio:
 auth:
   enabled: true
   
-  image:
-    tag: "v2.182.1"
-  
   environment:
     API_EXTERNAL_URL: https://api.credaction.com
     GOTRUE_SITE_URL: https://api.credaction.com
@@ -131,18 +103,6 @@ auth:
     GOTRUE_SMTP_HOST: "server.spalce.net"
     GOTRUE_SMTP_PORT: "587"
     GOTRUE_SMTP_SENDER_NAME: "CredAction"
-    # Advanced variables from main chart
-    DB_USER: supabase_auth_admin
-    DB_PORT: 5432
-    DB_DRIVER: postgres
-    DB_SSL: disable
-    GOTRUE_API_HOST: "0.0.0.0"
-    GOTRUE_API_PORT: "9999"
-    GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
-    GOTRUE_JWT_ADMIN_ROLES: service_role
-    GOTRUE_JWT_AUD: authenticated
-    GOTRUE_JWT_EXP: "3600"
-    GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED: "false"
   
   resources:
     requests:
@@ -159,18 +119,6 @@ auth:
 rest:
   enabled: true
   
-  image:
-    tag: "v13.0.7"
-  environment:
-    DB_USER: authenticator
-    DB_PORT: 5432
-    DB_DRIVER: postgres
-    DB_SSL: disable
-    PGRST_DB_SCHEMAS: public,storage,graphql_public
-    PGRST_DB_ANON_ROLE: anon
-    PGRST_DB_USE_LEGACY_GUCS: false
-    PGRST_APP_SETTINGS_JWT_EXP: 3600
-  
   resources:
     requests:
       memory: "128Mi"
@@ -185,28 +133,6 @@ rest:
 ## 6. Realtime
 realtime:
   enabled: true
-  
-  image:
-    tag: "v2.63.0"
-  
-  livenessProbe:
-    httpGet:
-      path: /
-      port: 4000
-    initialDelaySeconds: 3
-  environment:
-    DB_USER: supabase_admin
-    DB_PORT: 5432
-    DB_SSL: false
-    PORT: "4000"
-    FLY_ALLOC_ID: fly123
-    FLY_APP_NAME: realtime
-    ENABLE_TAILSCALE: "false"
-    DB_AFTER_CONNECT_QUERY: "SET search_path TO _realtime"
-    DB_ENC_KEY: supabaserealtime
-    ERL_AFLAGS: -proto_dist inet_tcp
-    DNS_NODES: "''"
-    RLIMIT_NOFILE: "10000"
   
   resources:
     requests:
@@ -223,15 +149,6 @@ realtime:
 meta:
   enabled: true
   
-  image:
-    tag: "v0.93.1"
-  environment:
-    DB_USER: supabase_admin
-    DB_PORT: 5432
-    DB_DRIVER: postgres
-    DB_SSL: disable
-    PG_META_PORT: "8080"
-  
   resources:
     requests:
       memory: "128Mi"
@@ -246,27 +163,6 @@ meta:
 ## 8. Storage - Using Longhorn for persistent volumes
 storage:
   enabled: true
-  
-  image:
-    tag: "v1.29.0"
-  
-  livenessProbe:
-    httpGet:
-      path: /status
-      port: 5000
-    initialDelaySeconds: 3
-  environment:
-    DB_USER: supabase_storage_admin
-    DB_PORT: 5432
-    DB_DRIVER: postgres
-    DB_SSL: disable
-    REQUEST_ALLOW_X_FORWARDED_PATH: "true"
-    PGOPTIONS: -c search_path=storage,public
-    FILE_SIZE_LIMIT: "52428800"
-    STORAGE_BACKEND: file
-    FILE_STORAGE_BACKEND_PATH: /var/lib/storage
-    TENANT_ID: stub
-    REGION: stub
   
   persistence:
     enabled: true
@@ -290,19 +186,6 @@ storage:
 imgproxy:
   enabled: true
   
-  image:
-    tag: "v3.8.0"
-  
-  environment:
-    IMGPROXY_ENABLE_WEBP_DETECTION: "true"
-  
-  livenessProbe:
-    exec:
-      command:
-        - imgproxy
-        - health
-    initialDelaySeconds: 3
-  
   persistence:
     enabled: true
     storageClassName: "longhorn"
@@ -324,14 +207,6 @@ imgproxy:
 ## 10. Kong - API Gateway with Nginx Ingress
 kong:
   enabled: true
-  
-  image:
-    repository: kong
-    tag: "2.8.1"
-  
-  environment:
-    KONG_DECLARATIVE_CONFIG: /usr/local/kong/kong.yml
-    KONG_LOG_LEVEL: info
   
   ingress:
     enabled: true
@@ -368,26 +243,6 @@ kong:
 analytics:
   enabled: true
   
-  image:
-    tag: "1.22.6"
-  
-  livenessProbe:
-    httpGet:
-      path: /health
-      port: 4000
-    initialDelaySeconds: 3
-  environment:
-    LOGFLARE_NODE_HOST: 127.0.0.1
-    DB_USERNAME: supabase_admin
-    DB_DATABASE: _supabase
-    DB_PORT: 5432
-    DB_DRIVER: postgresql
-    DB_SCHEMA: _analytics
-    POSTGRES_BACKEND_SCHEMA: _analytics
-    LOGFLARE_SINGLE_TENANT: "true"
-    LOGFLARE_SUPABASE_MODE: "true"
-    LOGFLARE_FEATURE_FLAG_OVERRIDE: multibackend=true
-  
   resources:
     requests:
       memory: "256Mi"
@@ -403,24 +258,6 @@ analytics:
 vector:
   enabled: true
   
-  image:
-    tag: "0.28.1-alpine"
-  
-  livenessProbe:
-    httpGet:
-      path: /health
-      port: 9001
-    initialDelaySeconds: 3
-  
-  volumeMounts:
-    - name: pod-logs
-      mountPath: /var/log/pods
-  
-  volumes:
-    - name: pod-logs
-      hostPath:
-        path: /var/log/pods
-  
   resources:
     requests:
       memory: "128Mi"
@@ -435,9 +272,6 @@ vector:
 ## 13. Functions
 functions:
   enabled: true
-  
-  image:
-    tag: "v1.68.4"
   
   resources:
     requests:

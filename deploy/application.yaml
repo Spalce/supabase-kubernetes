@@ -17,7 +17,7 @@ spec:
     helm:
       releaseName: supabase
       valueFiles:
-        - ../../deploy/values-k3s.yaml
+        - values-k3s.yaml
   
   destination:
     server: https://kubernetes.default.svc
