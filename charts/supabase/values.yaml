@@ -988,6 +988,7 @@ kong:
     KONG_PLUGINS: request-transformer,cors,key-auth,acl,basic-auth
     KONG_NGINX_PROXY_PROXY_BUFFER_SIZE: 160k
     KONG_NGINX_PROXY_PROXY_BUFFERS: 64 160k
+    KONG_NGINX_USER: ""
     KONG_LOG_LEVEL: warn
 
   ## Ingress configuration
@@ -1002,7 +1003,7 @@ kong:
       nginx.ingress.kubernetes.io/rewrite-target: /
       cert-manager.io/cluster-issuer: "letsencrypt-prod"
       kubernetes.io/tls-acme: "true"
-      kubernetes.io/ingress.class: "nginx"
+      kubertetes.io/ingress.class: "nginx"
     tls:
       ## Define TLS secret for SSL termination.
       ## This section can be left blank if using cluster certificate manager.
