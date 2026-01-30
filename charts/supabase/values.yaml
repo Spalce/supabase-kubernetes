@@ -83,7 +83,7 @@ secret:
   ## Studio dashboard credentials
   ##
   dashboard:
-    username: "supabase"
+    username: "Admin"
     password: "Ziu0cNUv3mxDxVmFSnPlBD59gKGcwQi1"
     openAiApiKey: "key_super_secret"
 
