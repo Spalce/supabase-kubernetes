@@ -55,8 +55,8 @@ secret:
   ## Logflare credentials
   ##
   analytics:
-    publicAccessToken: "z/uVNNcJGrRVXQ7VmIxx2uO0erUuJwGAkI4xJxhzvfg="
-    privateAccessToken: "eiUv2yJ138Bg56z3lQ35mcJIGDzVynDP7n2Tqyqd/pk="
+    publicAccessToken: "your-super-secret-and-long-logflare-key-public"
+    privateAccessToken: "your-super-secret-and-long-logflare-key-private"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -988,8 +988,7 @@ kong:
     KONG_PLUGINS: request-transformer,cors,key-auth,acl,basic-auth
     KONG_NGINX_PROXY_PROXY_BUFFER_SIZE: 160k
     KONG_NGINX_PROXY_PROXY_BUFFERS: 64 160k
-    KONG_NGINX_USER: ""
-    KONG_LOG_LEVEL: info
+    KONG_LOG_LEVEL: warn
 
   ## Ingress configuration
   ingress:
@@ -1005,12 +1004,9 @@ kong:
       kubernetes.io/tls-acme: "true"
       kubertetes.io/ingress.class: "nginx"
     tls:
-      ## Define TLS secret for SSL termination.
-      ## This section can be left blank if using cluster certificate manager.
-      ## Otherwise, setting this in tandem with certificate manager will overwrite the secret name.
-       - secretName: credaction-api-tls
-         hosts:
-           - api.credaction.com
+      - secretName: credaction-api-tls
+        hosts:
+          - api.credaction.com
     hosts:
       - host: api.credaction.com
         paths:
