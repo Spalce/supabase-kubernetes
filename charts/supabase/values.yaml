@@ -55,8 +55,8 @@ secret:
   ## Logflare credentials
   ##
   analytics:
-    publicAccessToken: "your-super-secret-and-long-logflare-key-public"
-    privateAccessToken: "your-super-secret-and-long-logflare-key-private"
+    publicAccessToken: "lf_pub_b7c29f24e0d845e1a1b79d3fe445cc0e7e9c2f9831ad4c3b9f6e01d2fd91a3b"
+    privateAccessToken: "lf_prv_f8c12e94a7d349d0be6f78a2c59e1de3ab47c19ff0e8a6d2c0f1b9d8c273afed"
 
     ## Reference to existing secret
     # secretRef: ""
@@ -152,7 +152,7 @@ db:
   image:
     repository: supabase/postgres
     pullPolicy: IfNotPresent
-    tag: "15.8.1.085"
+    tag: "17.6.1.016"
 
   ## Secrets used to pull private images
   imagePullSecrets: []
@@ -481,7 +481,7 @@ rest:
   image:
     repository: postgrest/postgrest
     pullPolicy: IfNotPresent
-    tag: "v13.0.7"
+    tag: "v14.1"
 
   ## Secrets used to pull private images
   imagePullSecrets: []
@@ -746,7 +746,7 @@ storage:
   image:
     repository: supabase/storage-api
     pullPolicy: IfNotPresent
-    tag: "v1.29.0"
+    tag: "v1.33.0"
 
   ## Secrets used to pull private images
   imagePullSecrets: []
@@ -1058,7 +1058,7 @@ analytics:
   image:
     repository: supabase/logflare
     pullPolicy: IfNotPresent
-    tag: "1.22.6"
+    tag: "1.26.25"
 
   ## Secrets used to pull private images
   imagePullSecrets: []
